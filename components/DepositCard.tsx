@@ -1,6 +1,15 @@
 import type { NextPage } from "next";
 import styles from "@/styles/depositCard.module.css";
 import Image from "next/image";
+import {
+  useWriteContract,
+  useWaitForTransactionReceipt,
+  useReadContract,
+} from "wagmi";
+import { getAccount } from "wagmi/actions";
+import { abi } from "@/libs/abi";
+import { parseEther } from "viem";
+import { config } from "@/libs/config";
 
 interface DepositCardProps {
   isOpen: boolean;
@@ -8,6 +17,32 @@ interface DepositCardProps {
 }
 
 const DepositCard: NextPage<DepositCardProps> = ({ isOpen, onClose }) => {
+  let showButton = true;
+  const contractAddress = "0x843A9C9d1f3B148a1dBB3D62705aaD24f3658676";
+  const account = getAccount(config);
+
+  const { data: hash, isPending, writeContract } = useWriteContract();
+  const { data: balance } = useReadContract({
+    abi,
+    address: contractAddress,
+    functionName: "getBalance",
+    args: [account.address || "0x0000000000000000000000000000000000000000"],
+  });
+
+  async function submit() {
+    writeContract({
+      abi,
+      address: contractAddress,
+      functionName: "payEntryFee",
+      args: [],
+      value: parseEther("10"), // 10 GAS
+    });
+  }
+
+  const { isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
+  if (isConfirmed) showButton = false;
+  if (balance == parseEther("10")) showButton = false;
+
   if (!isOpen) return null;
 
   return (
@@ -29,11 +64,23 @@ const DepositCard: NextPage<DepositCardProps> = ({ isOpen, onClose }) => {
               2024/08/12 23:59:59 UTC.
             </div>
           </div>
-          <div className={styles.buttonGroup}>
-            <div className={styles.button}>
-              <button className={styles.button1}>Deposit</button>
+          {showButton ? (
+            <div className={styles.buttonGroup}>
+              <div className={styles.button}>
+                <button
+                  className={styles.button1}
+                  onClick={submit}
+                  disabled={isPending}
+                >
+                  {isPending ? "Depositting" : "Deposit"}
+                </button>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className={styles.bodyTextFor}>
+              You have successfully deposited!
+            </div>
+          )}
         </div>
       </div>
       <button onClick={onClose}>
