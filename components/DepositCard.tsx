@@ -10,6 +10,7 @@ import { getAccount } from "wagmi/actions";
 import { abi } from "@/libs/abi";
 import { parseEther } from "viem";
 import { config } from "@/libs/config";
+import { contractAddress } from "@/libs/address";
 
 interface DepositCardProps {
   isOpen: boolean;
@@ -18,15 +19,14 @@ interface DepositCardProps {
 
 const DepositCard: NextPage<DepositCardProps> = ({ isOpen, onClose }) => {
   let showButton = true;
-  const contractAddress = "0x843A9C9d1f3B148a1dBB3D62705aaD24f3658676";
   const account = getAccount(config);
 
-  const { data: hash, isPending, writeContract } = useWriteContract();
+  const { data: hash, error, isPending, writeContract } = useWriteContract();
   const { data: balance } = useReadContract({
     abi,
     address: contractAddress,
     functionName: "getBalance",
-    args: [account.address || "0x0000000000000000000000000000000000000000"],
+    args: [account.address || "0x0"],
   });
 
   async function submit() {
@@ -42,6 +42,7 @@ const DepositCard: NextPage<DepositCardProps> = ({ isOpen, onClose }) => {
   const { isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
   if (isConfirmed) showButton = false;
   if (balance == parseEther("10")) showButton = false;
+  if (error) alert(`Error: ${error.message}`);
 
   if (!isOpen) return null;
 
