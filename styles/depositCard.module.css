@@ -1,0 +1,101 @@
+.infoIcon {
+  width: 34.2px;
+  position: relative;
+  height: 34.2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.title {
+  align-self: stretch;
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 120%;
+  font-weight: 600;
+}
+.bodyTextFor {
+  align-self: stretch;
+  position: relative;
+  font-size: 17.11px;
+  line-height: 140%;
+  color: #757575;
+}
+.text {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8.6px;
+}
+.button1 {
+  position: relative;
+  line-height: 100%;
+}
+.button {
+  border-radius: 8.2px;
+  background-color: #e3e3e3;
+  border: 1.1px solid #767676;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 12.8px;
+}
+.buttonGroup {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 17.11px;
+}
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 17.1px;
+  min-width: 171.13px;
+}
+.card {
+  position: absolute;
+  top: 20px;
+  left: 11px;
+  border-radius: 8.2px;
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  width: 470.6px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 24px;
+  gap: 24px;
+  min-width: 256.69px;
+}
+.xCircleIcon {
+  position: absolute;
+  top: 40px;
+  left: 436px;
+  width: 31px;
+  height: 31px;
+  overflow: hidden;
+}
+.cardParent {
+  width: 100%;
+  position: absolute;
+  top: 300px;
+  left: 50%;
+  transform: translate(-18%, -50%);
+  height: 288px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 25.67px;
+  color: #1e1e1e;
+  font-family: Inter;
+  z-index: 1000;
+}

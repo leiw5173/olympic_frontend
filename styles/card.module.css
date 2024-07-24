@@ -1,0 +1,131 @@
+.select {
+  position: absolute;
+  top: 6.96px;
+  left: 81.43px;
+  line-height: 100%;
+}
+.button {
+  position: absolute;
+  top: 205px;
+  left: 19px;
+  border-radius: 4.64px;
+  background-color: #e3e3e3;
+  border: 0.6px solid #767676;
+  box-sizing: border-box;
+  width: 191.9px;
+  height: 23.2px;
+  overflow: hidden;
+}
+.b {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 120%;
+}
+.price {
+  position: absolute;
+  top: 10.43px;
+  left: 95.43px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.header {
+  position: absolute;
+  top: 18.57px;
+  left: 18.57px;
+  width: 191.9px;
+  height: 55.1px;
+  font-size: 27.85px;
+}
+.whichCountryIs {
+  align-self: stretch;
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 120%;
+  font-weight: 600;
+  display: inline-block;
+  height: 18.6px;
+  flex-shrink: 0;
+}
+.dueIn24h {
+  align-self: stretch;
+  position: relative;
+  font-size: 9px;
+  letter-spacing: -0.02em;
+  line-height: 120%;
+  color: #6d6d6d;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  height: 18.6px;
+  flex-shrink: 0;
+}
+.whichCountryIsTheWinnerParent {
+  position: absolute;
+  top: 84px;
+  left: 20.89px;
+  width: 193.6px;
+  height: 37.1px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: center;
+  font-size: 13.93px;
+  color: #000;
+}
+.title {
+  flex: 1;
+  position: relative;
+  line-height: 140%;
+  font-weight: 600;
+}
+.chevronDownIcon {
+  width: 10.8px;
+  position: relative;
+  height: 10.8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.accordionTitle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border-radius: 4.4px;
+  background-color: #f5f5f5;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  width: 191px;
+  height: 29.3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0px 16px;
+}
+
+.accordionItemWrapper {
+  position: absolute;
+  top: 127px;
+  left: 9px;
+  width: 211px;
+  height: 49.3px;
+  font-size: 16px;
+}
+.pricingCard {
+  width: 100%;
+  position: relative;
+  border-radius: 4.64px;
+  background-color: #fff;
+  border: 0.6px solid #d9d9d9;
+  box-sizing: border-box;
+  height: 268.6px;
+  overflow: hidden;
+  flex-shrink: 0;
+  min-width: 174.07px;
+  text-align: left;
+  font-size: 9.28px;
+  color: #1e1e1e;
+  font-family: Inter;
+}
