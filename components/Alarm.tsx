@@ -28,7 +28,7 @@ const Alarm: NextPage<AlarmProps> = ({ visible }) => {
     return (
       <div className={styles.pleaseWaitForTheEndOfOlyParent}>
         <div className={styles.pleaseWaitFor}>
-          Please wait for the end of Olympic Games to withdraw your deposit.
+          Please wait for Augest 12th to withdraw.
         </div>
         <Image
           className={styles.alertCircleIcon}
