@@ -41,8 +41,6 @@ const PricingCard: NextPage<PricingCardProps> = ({ eventId }) => {
     args: [address || "0x0", BigInt(eventId)],
   });
 
-  console.log(bet);
-
   const { data: balance } = useReadContract({
     address: contractAddress,
     abi: abi,
