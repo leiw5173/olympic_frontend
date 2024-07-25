@@ -21,16 +21,38 @@ const Desktop: FunctionComponent = () => {
         <div className={styles.cardGridPricing}>
           <div className={styles.cardGrid}>
             <div className={styles.pricingCard}>
-              <PricingCard />
+              <PricingCard eventId={1} />
             </div>
             <div className={styles.pricingCard}>
-              <PricingCard />
+              <PricingCard eventId={1} />
             </div>
             <div className={styles.pricingCard}>
-              <PricingCard />
+              <PricingCard eventId={1} />
             </div>
             <div className={styles.pricingCard}>
-              <PricingCard />
+              <PricingCard eventId={1} />
+            </div>
+          </div>
+          <div className={styles.cardGrid}>
+            <div className={styles.pricingCard}>
+              <PricingCard eventId={1} />
+            </div>
+            <div className={styles.pricingCard}>
+              <PricingCard eventId={1} />
+            </div>
+            <div className={styles.pricingCard}>
+              <PricingCard eventId={1} />
+            </div>
+            <div className={styles.pricingCard}>
+              <PricingCard eventId={1} />
+            </div>
+          </div>
+          <div className={styles.cardGrid}>
+            <div className={styles.pricingCard}>
+              <PricingCard eventId={1} />
+            </div>
+            <div className={styles.pricingCard}>
+              <PricingCard eventId={1} />
             </div>
           </div>
         </div>
