@@ -12,6 +12,7 @@ import { abi } from "@/libs/abi";
 import { formatEther, parseEther } from "viem";
 import { Event } from "@/libs/definitions";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 interface PricingCardProps {
   eventId: number;
@@ -24,6 +25,7 @@ const PricingCard: NextPage<PricingCardProps> = ({ eventId }) => {
   let options: { value: string; label: string }[] = [];
   let disableButton = false;
   const { address } = useAccount();
+  const [selectPrediction, setSelectPrediction] = useState("");
   const { data } = useReadContract({
     address: contractAddress,
     abi,
@@ -78,13 +80,17 @@ const PricingCard: NextPage<PricingCardProps> = ({ eventId }) => {
   const minutes = Math.floor((differenceInSecs % 3600) / 60);
 
   const handleSelect = (value: string) => {
+    setSelectPrediction(value);
+  };
+
+  async function submit() {
     writeContract({
       abi,
       address: contractAddress,
       functionName: "placeBet",
-      args: [BigInt(eventId), value],
+      args: [BigInt(eventId), selectPrediction],
     });
-  };
+  }
 
   if (error) alert(`Error: ${error.message}`);
   if (isConfirmed) {
@@ -118,14 +124,18 @@ const PricingCard: NextPage<PricingCardProps> = ({ eventId }) => {
           <Dropdown options={options} onSelect={handleSelect} />
         )}
       </div>
-      <div className={styles.button}>
-        <button className={styles.select} disabled={disableButton}>
+      <button
+        className={styles.button}
+        disabled={disableButton}
+        onClick={submit}
+      >
+        <div className={styles.select}>
           {!bet?.isPlaced && event.status == 0 && "Select"}
           {bet?.isPlaced && event.status == 0 && "Placed"}
           {win && event.status == 2 && "You Won!"}
           {!win && event.status == 2 && "You Lost!"}
-        </button>
-      </div>
+        </div>
+      </button>
     </div>
   );
 };
