@@ -1,77 +1,82 @@
 .select {
-  position: absolute;
-  top: 6.96px;
-  left: 81.43px;
+  width: 28px;
+  position: relative;
+  font-size: 9.28px;
   line-height: 100%;
+  font-family: Inter;
+  color: #1e1e1e;
+  text-align: left;
+  display: inline-block;
 }
 .button {
-  position: absolute;
-  top: 205px;
-  left: 19px;
+  width: 191px;
+  position: relative;
   border-radius: 4.64px;
   background-color: #e3e3e3;
   border: 0.6px solid #767676;
   box-sizing: border-box;
-  width: 191.9px;
   height: 23.2px;
   overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  font-size: 9.28px;
+  color: #1e1e1e;
+  font-family: Inter;
 }
 .b {
   position: relative;
+  font-size: 27.85px;
   letter-spacing: -0.02em;
   line-height: 120%;
+  font-family: Inter;
+  color: #1e1e1e;
+  text-align: right;
 }
+
 .price {
   position: absolute;
   top: 10.43px;
-  left: 95.43px;
+  left: 120.43px;
+  width: 70px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 .header {
-  position: absolute;
-  top: 18.57px;
-  left: 18.57px;
+  position: relative;
   width: 191.9px;
   height: 55.1px;
   font-size: 27.85px;
 }
 .whichCountryIs {
-  align-self: stretch;
+  width: 193px;
+  font-size: 14px;
   position: relative;
   letter-spacing: -0.02em;
   line-height: 120%;
   font-weight: 600;
   display: inline-block;
-  height: 18.6px;
-  flex-shrink: 0;
 }
 .dueIn24h {
-  align-self: stretch;
+  top: 4px;
   position: relative;
   font-size: 9px;
   letter-spacing: -0.02em;
   line-height: 120%;
   color: #6d6d6d;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  height: 18.6px;
-  flex-shrink: 0;
 }
 .whichCountryIsTheWinnerParent {
-  position: absolute;
-  top: 84px;
-  left: 20.89px;
-  width: 193.6px;
-  height: 37.1px;
+  position: relative;
+  height: 70px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  text-align: center;
   font-size: 13.93px;
   color: #000;
 }
@@ -99,6 +104,7 @@
   width: 191px;
   height: 29.3px;
   display: flex;
+  font-size: 10.8px;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
@@ -106,12 +112,13 @@
 }
 
 .accordionItemWrapper {
-  position: absolute;
-  top: 127px;
-  left: 9px;
-  width: 211px;
+  width: 100%;
+  position: relative;
   height: 49.3px;
-  font-size: 16px;
+  text-align: left;
+  font-size: 8.65px;
+  color: #1e1e1e;
+  font-family: Inter;
 }
 .pricingCard {
   width: 100%;
@@ -123,6 +130,12 @@
   height: 268.6px;
   overflow: hidden;
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 19px 9px;
+  gap: 6px;
   min-width: 174.07px;
   text-align: left;
   font-size: 9.28px;
