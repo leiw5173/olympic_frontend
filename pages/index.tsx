@@ -44,7 +44,7 @@ const Desktop: FunctionComponent = () => {
             <div className={styles.cardGrid} key={index}>
               {chunk.map((eventId) => (
                 <div className={styles.pricingCard} key={eventId}>
-                  <PricingCard eventId={1} />
+                  <PricingCard eventId={eventId} />
                 </div>
               ))}
             </div>

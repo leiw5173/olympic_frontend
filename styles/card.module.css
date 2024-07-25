@@ -63,6 +63,7 @@
   display: inline-block;
 }
 .dueIn24h {
+  top: 4px;
   position: relative;
   font-size: 9px;
   letter-spacing: -0.02em;

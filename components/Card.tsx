@@ -110,7 +110,7 @@ const PricingCard: NextPage<PricingCardProps> = ({ eventId }) => {
         </div>
       </div>
       <div className={styles.accordionItemWrapper}>
-        {bet ? (
+        {bet?.isPlaced ? (
           <div className={styles.accordionTitle}>
             Your pridiction is: {bet.prediction}
           </div>
