@@ -1,11 +1,11 @@
 .select {
-  width: 28px;
+  width: 100%;
   position: relative;
   font-size: 9.28px;
   line-height: 100%;
   font-family: Inter;
   color: #1e1e1e;
-  text-align: left;
+  text-align: center;
   display: inline-block;
 }
 .button {
@@ -87,9 +87,9 @@
   font-weight: 600;
 }
 .chevronDownIcon {
-  width: 10.8px;
+  width: 100%;
   position: relative;
-  height: 10.8px;
+  height: 100%;
   overflow: hidden;
   flex-shrink: 0;
 }
