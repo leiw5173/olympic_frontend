@@ -39,7 +39,9 @@ const DepositCard: NextPage<DepositCardProps> = ({ isOpen, onClose }) => {
     });
   }
 
-  const { isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
+  const { isSuccess: isConfirmed, isLoading } = useWaitForTransactionReceipt({
+    hash,
+  });
   if (isConfirmed) showButton = false;
   if (balance == parseEther("10")) showButton = false;
   if (error) alert(`Error: ${error.message}`);
@@ -71,9 +73,9 @@ const DepositCard: NextPage<DepositCardProps> = ({ isOpen, onClose }) => {
                 <button
                   className={styles.button1}
                   onClick={submit}
-                  disabled={isPending}
+                  disabled={isPending || isLoading}
                 >
-                  {isPending ? "Depositting" : "Deposit"}
+                  {isPending || isLoading ? "Depositting" : "Deposit"}
                 </button>
               </div>
             </div>

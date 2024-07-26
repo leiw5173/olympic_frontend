@@ -24,7 +24,7 @@ const PricingCard: NextPage<PricingCardProps> = ({ eventId }) => {
   let win = false;
   let event: Event;
   let options: { value: string; label: string }[] = [];
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const { address } = useAccount();
   const [selectPrediction, setSelectPrediction] = useState("");
   const { data } = useReadContract({
@@ -35,7 +35,9 @@ const PricingCard: NextPage<PricingCardProps> = ({ eventId }) => {
   });
 
   const { data: hash, error, isPending, writeContract } = useWriteContract();
-  const { isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
+  const { isSuccess: isConfirmed, isLoading } = useWaitForTransactionReceipt({
+    hash,
+  });
 
   const { data: bet } = useReadContract({
     address: contractAddress,
@@ -52,9 +54,15 @@ const PricingCard: NextPage<PricingCardProps> = ({ eventId }) => {
   });
 
   useEffect(() => {
-    if (balance != parseEther("10") || !address || isPending || bet?.isPlaced)
+    if (
+      balance != parseEther("10") ||
+      !address ||
+      isPending ||
+      bet?.isPlaced ||
+      isLoading
+    )
       setIsButtonDisabled(true);
-  }, [address, isPending, bet?.isPlaced, balance]);
+  }, [address, isPending, bet?.isPlaced, balance, isLoading]);
 
   if (!data) {
     console.log("No data available");
