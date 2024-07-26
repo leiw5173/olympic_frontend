@@ -3,6 +3,7 @@ import styles from "../styles/header.module.css";
 import Image from "next/image";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { useAccount } from "wagmi";
 import {
   useReadContract,
@@ -61,6 +62,13 @@ const Header: NextPage<DepositCardProps> = ({ onOpen }) => {
       </div>
       <div className={styles.headerAuth}>
         <Alarm visible={visibe} />
+        {address == "0xFfab316a48d30d0EB55052DAb01f706F61E87568" && (
+          <div className={styles.button}>
+            <Link href={"/create"}>
+              <button className={styles.button1}>Create</button>
+            </Link>
+          </div>
+        )}
         {deposited ? (
           <div
             className={styles.button}

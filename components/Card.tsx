@@ -12,7 +12,8 @@ import { abi } from "@/libs/abi";
 import { formatEther, parseEther } from "viem";
 import { Event } from "@/libs/definitions";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 
 interface PricingCardProps {
   eventId: number;
@@ -23,7 +24,7 @@ const PricingCard: NextPage<PricingCardProps> = ({ eventId }) => {
   let win = false;
   let event: Event;
   let options: { value: string; label: string }[] = [];
-  let disableButton = false;
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const { address } = useAccount();
   const [selectPrediction, setSelectPrediction] = useState("");
   const { data } = useReadContract({
@@ -34,7 +35,9 @@ const PricingCard: NextPage<PricingCardProps> = ({ eventId }) => {
   });
 
   const { data: hash, error, isPending, writeContract } = useWriteContract();
-  const { isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
+  const { isSuccess: isConfirmed, isLoading } = useWaitForTransactionReceipt({
+    hash,
+  });
 
   const { data: bet } = useReadContract({
     address: contractAddress,
@@ -50,8 +53,16 @@ const PricingCard: NextPage<PricingCardProps> = ({ eventId }) => {
     args: [address || "0x0"],
   });
 
-  if (balance != parseEther("10") || !address || isPending || bet?.isPlaced)
-    disableButton = true;
+  useEffect(() => {
+    if (
+      balance != parseEther("10") ||
+      !address ||
+      isPending ||
+      bet?.isPlaced ||
+      isLoading
+    )
+      setIsButtonDisabled(true);
+  }, [address, isPending, bet?.isPlaced, balance, isLoading]);
 
   if (!data) {
     console.log("No data available");
@@ -126,16 +137,25 @@ const PricingCard: NextPage<PricingCardProps> = ({ eventId }) => {
       </div>
       <button
         className={styles.button}
-        disabled={disableButton}
+        disabled={isButtonDisabled}
         onClick={submit}
       >
         <div className={styles.select}>
-          {!bet?.isPlaced && event.status == 0 && "Select"}
-          {bet?.isPlaced && event.status == 0 && "Placed"}
-          {win && event.status == 2 && "You Won!"}
-          {!win && event.status == 2 && "You Lost!"}
+          {!bet?.isPlaced && address && event.status == 0 && "Select"}
+          {bet?.isPlaced && address && event.status == 0 && "Placed"}
+          {win && address && event.status == 2 && bet?.isPlaced && "You Won!"}
+          {!win && address && event.status == 2 && bet?.isPlaced && "You Lost!"}
+          {event.status == 2 && address && !bet?.isPlaced && "Event is over!"}
+          {!address && "Please connect wallet first!"}
         </div>
       </button>
+      {address == "0xFfab316a48d30d0EB55052DAb01f706F61E87568" && (
+        <Link href={`/xadmin/${eventId}/manage`}>
+          <button className={styles.button}>
+            <div className={styles.select}>Manage</div>
+          </button>
+        </Link>
+      )}
     </div>
   );
 };
