@@ -15,7 +15,9 @@ import {
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export default function Page() {
-  const id = useRouter().query.id;
+  const router = useRouter();
+  const { id } = router.query;
+  const idString: string = Array.isArray(id) ? id[0] : id || "0";
   let event: Event;
   let options: { value: string; label: string }[] = [];
   const [selectWinner, setSelectWinner] = useState("");
@@ -27,7 +29,7 @@ export default function Page() {
     address: contractAddress,
     abi,
     functionName: "getE",
-    args: [BigInt(Number(id))],
+    args: [BigInt(idString)],
   });
 
   if (!data) {
