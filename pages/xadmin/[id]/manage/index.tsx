@@ -65,6 +65,15 @@ export default function Page() {
     });
   };
 
+  const pay = () => {
+    writeContract({
+      abi,
+      address: contractAddress,
+      functionName: "payWinners",
+      args: [BigInt(event.eventId)],
+    });
+  };
+
   // Calculate Due time
   const now = Math.floor(Date.now() / 1000);
   const differenceInSecs = Number(event.deadline) - now;
@@ -92,6 +101,9 @@ export default function Page() {
       </button>
       {isConfirmed && <p>Winner set successfully!</p>}
       {error && <p>Error: {error.message}</p>}
+      <button className={styles.button} onClick={pay}>
+        PAY
+      </button>
       <Link href={"/"}>
         <button className={styles.button}>BACK</button>
       </Link>
