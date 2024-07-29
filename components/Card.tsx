@@ -62,6 +62,7 @@ const PricingCard: NextPage<PricingCardProps> = ({ eventId }) => {
       isLoading
     )
       setIsButtonDisabled(true);
+    else setIsButtonDisabled(false);
   }, [address, isPending, bet?.isPlaced, balance, isLoading]);
 
   if (!data) {
