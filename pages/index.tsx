@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useReadContract } from "wagmi";
 import { abi } from "@/libs/abi";
 import { contractAddress } from "@/libs/address";
+import Head from "next/head";
 
 const Desktop: FunctionComponent = () => {
   const [isDepositOpen, setIsDepositOpen] = useState(false);
@@ -34,25 +35,30 @@ const Desktop: FunctionComponent = () => {
   }
 
   return (
-    <div className={styles.desktop1}>
-      <div className={styles.examplespricing}>
-        <Header onOpen={handleDepositClick} />
-        <DepositCard isOpen={isDepositOpen} onClose={handleClose} />
+    <main>
+      <Head>
+        <title>Neo X | Olympic Guess-a-thon</title>
+      </Head>
+      <div className={styles.desktop1}>
+        <div className={styles.examplespricing}>
+          <Header onOpen={handleDepositClick} />
+          <DepositCard isOpen={isDepositOpen} onClose={handleClose} />
 
-        <div className={styles.cardGridPricing}>
-          {chunkedArray.map((chunk, index) => (
-            <div className={styles.cardGrid} key={index}>
-              {chunk.map((eventId) => (
-                <div className={styles.pricingCard} key={eventId}>
-                  <PricingCard eventId={eventId} />
-                </div>
-              ))}
-            </div>
-          ))}
+          <div className={styles.cardGridPricing}>
+            {chunkedArray.map((chunk, index) => (
+              <div className={styles.cardGrid} key={index}>
+                {chunk.map((eventId) => (
+                  <div className={styles.pricingCard} key={eventId}>
+                    <PricingCard eventId={eventId} />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
-    </div>
+    </main>
   );
 };
 
