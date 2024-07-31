@@ -10,9 +10,8 @@ import { WagmiProvider } from "wagmi";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 const neox = {
-  id: 12227332,
-  name: "NeoX",
-
+  id: 47763,
+  name: "Neo X",
   iconUrl: "/neox.png",
   iconBackground: "#fff",
   nativeCurrency: {
@@ -21,10 +20,10 @@ const neox = {
     symbol: "GAS",
   },
   rpcUrls: {
-    default: { http: ["https://neoxt4seed1.ngd.network"] },
+    default: { http: ["https://mainnet-1.rpc.banelabs.org"] },
   },
   blockExplorers: {
-    default: { name: "NeoXScan", url: "https://xt4scan.ngd.network/" },
+    default: { name: "NeoXScan", url: "https://xexplorer.neo.org" },
   },
 } as const satisfies Chain;
 
