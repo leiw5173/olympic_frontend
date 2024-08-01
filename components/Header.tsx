@@ -26,6 +26,8 @@ const Header: NextPage<DepositCardProps> = ({ onOpen }) => {
 
   const [visibe, setVisibe] = useState(false);
 
+  const currentTime = Math.round(new Date().getTime() / 1000);
+
   const showAlarm = () => setVisibe(true);
   const hideAlarm = () => setVisibe(false);
 
@@ -54,6 +56,7 @@ const Header: NextPage<DepositCardProps> = ({ onOpen }) => {
   }
 
   if (error) alert(`Error: ${error.message}`);
+  if (isConfirmed) alert("Deposit Successfully");
 
   return (
     <div className={styles.header}>
@@ -78,7 +81,9 @@ const Header: NextPage<DepositCardProps> = ({ onOpen }) => {
             <button
               className={styles.button1}
               onClick={submit}
-              disabled={isPending}
+              disabled={
+                isPending || isButtonDisabled || currentTime < 1723392000
+              }
             >
               {isConfirmed ? "Withdraw Successfully" : "Withdraw"}
             </button>
