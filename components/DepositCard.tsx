@@ -54,7 +54,7 @@ const DepositCard: NextPage<DepositCardProps> = ({ isOpen, onClose }) => {
         <Image
           className={styles.infoIcon}
           alt=""
-          src="Info.svg"
+          src="/info.svg"
           width={34}
           height={34}
         />
