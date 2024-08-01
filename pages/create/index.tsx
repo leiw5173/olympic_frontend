@@ -25,7 +25,7 @@ export default function Page() {
 
   const handleAddItems = () => {
     const newItems = inputValue
-      .split(/[\s,]+/) // Split by whitespace and comma
+      .split(/[,]+/) // Split by whitespace and comma
       .filter((item) => item.trim() !== ""); // Remove empty strings
 
     setList([...list, ...newItems]);
