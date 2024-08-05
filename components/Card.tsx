@@ -146,7 +146,10 @@ const PricingCard: NextPage<PricingCardProps> = ({ eventId }) => {
           {bet?.isPlaced && address && event.status == 0 && "Placed"}
           {win && address && event.status == 2 && bet?.isPlaced && "You Won!"}
           {!win && address && event.status == 2 && bet?.isPlaced && "You Lost!"}
+          {win && address && event.status == 1 && bet?.isPlaced && "You Won!"}
+          {!win && address && event.status == 1 && bet?.isPlaced && "You Lost!"}
           {event.status == 2 && address && !bet?.isPlaced && "Event is over!"}
+          {event.status == 1 && address && !bet?.isPlaced && "Event is over!"}
           {!address && "Please connect wallet first!"}
         </div>
       </button>
